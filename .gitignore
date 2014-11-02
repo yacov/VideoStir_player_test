@@ -1,0 +1,88 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# =========================
+# Operating System Files
+# =========================
+
+# OSX
+# =========================
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must ends with two \r.
+Icon
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# Windows
+# =========================
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Some project files
+/target/**
+/test-output/**
+target/classes/application.properties
+*/main/resources/application.properties
+<<<<<<< HEAD
+*/pom.xml
+*/.classpath
+*/.project
+*/.gitignore
+=======
+<<<<<<< HEAD
+*/pom.xml
+*/.classpath
+*/.project
+=======
+*/pom.xml
+*/.project
+*/.classpath
+/main/resources/Copy.application.properties
+/main/resources/application.properties
+>>>>>>> 9695334e23810a44b7a67e0386ea86122ca5464c
+>>>>>>> 7a6d7e1da9b669f78d1d60ee7f0e44b7bcf5d7b7
+test-output/emailable-report.html
+test-output/emailable-report.html
+*.html
+test-output/**
+test-output/index.html
+test-output/junitreports/TEST-ru.telran.sel.LoginTests.xml
+test-output/old/index.html
+test-output/testng-failed.xml
+test-output/testng-results.xml
+*.properties
+src/main/resources/application.properties
+test-output/Default suite/Default test.html
+_notes

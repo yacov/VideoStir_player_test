@@ -1,0 +1,123 @@
+HASHID 18c99febe2085a43b281654fb32ee226
+line1 <script type="text/javascript" src="https://c391671.ssl.cf1.rackcdn.com/js/121221-vs-libs.min.js"></script></script>
+line2 <script src="https://6bfe2caabccdd577a810-bdbb90f389a017a4d0321ddd645160f1.ssl.cf1.rackcdn.com/js/2.13.0/vs.player.min.js"></script></script>
+
+tc0-regular <script> VS.Player.show("bottom-right",300,270,"HASHID",{"auto-play":true,"playback-delay":1,"extrab":1,"gubed":true});</script>
+
+tc1.1-rotation+90 <script>VS.Player.show("bottom-right",300,270,"HASHID",{"auto-play":true,"playback-delay":1,"rotation":90,"gubed":true});</script>
+
+tc1.2-rotation+180 <script>VS.Player.show("bottom-right",300, 270, "HASHID", {"auto-play":true,"playback-delay":1,"rotation": 180,"gubed":true});</script>
+
+tc1.3-rotation+270 <script>VS.Player.show("bottom-right",300, 270, "HASHID", {"auto-play":true,"playback-delay": 1,"rotation": 270,"gubed":true});</script>
+
+tc1.4-rotation-0 <script>VS.Player.show("bottom-right",300, 270, "HASHID", {"auto-play":true,"playback-delay":1,"rotation": 0,"gubed":true});</script>
+
+tc2-freeze-100-big <script>VS.Player.show("bottom-right", 700,300, "HASHID", {"auto-play":false,"playback-delay":1,"extrab": 1, "freeze":100,"gubed":true});</script>
+
+tc3-extrab-10 <script>VS.Player.show("bottom-right",480,270,"HASHID",{"auto-play": true, "playback-delay":1,"extrab":10,"gubed":true});</script>
+
+tc4-offsetX-50 <script>VS.Player.show("bottom-right",480,270,"HASHID",{"auto-play": true, "playback-delay":1,"extrab": 1,"offset-x": 100,"gubed":true});</script>
+
+tc5-offsetY-100 <script>VS.Player.show("bottom-right",480,270,"HASHID",{"auto-play": true, "playback-delay":1,"extrab": 1,"offset-y": 100,"gubed":true});</script>
+
+tc6.1-on-finish-button-play-button <script>VS.Player.show("bottom-right",300, 270, "HASHID", {"auto-play": true, "playback-delay":1,"extrab": 1, "on-finish":"play-button","gubed":true});</script>
+
+tc6.2-on-finish-button-remove <script>VS.Player.show("bottom-right",300, 270, "HASHID", {"auto-play": true, "playback-delay":1,"extrab": 1, "on-finish":"remove","gubed":true});</script>
+
+tc6.3-on-finish-button-blank <script>VS.Player.show("bottom-right",300, 270, "HASHID", {"auto-play": true, "playback-delay":1,"extrab": 1, "on-finish":"blank","gubed":true});</script>
+
+tc7.1-regular-center <script>VS.Player.show("center",300,270, "HASHID", {"auto-play": true, "playback-delay":1, "extrab":1,"gubed":true});</script>
+
+tc7.2-regular-top-left <script>VS.Player.show("top-left",300,270, "HASHID", {"auto-play": true, "playback-delay":1, "extrab":1,"gubed":true});</script>
+
+tc7.3-regular-top-right <script>VS.Player.show("top-right",300,270, "HASHID", {"auto-play": true, "playback-delay":1, "extrab":1,"gubed":true});</script>
+
+tc7.4-regular-bottom-left <script>VS.Player.show("bottom-left",300,270, "HASHID", {"auto-play": true, "playback-delay":1, "extrab":1,"gubed":true});</script>
+
+tc7.5-regular-bottom-right <script>VS.Player.show("bottom-right",300, 270, "HASHID", {"auto-play": true, "playback-delay":1, "extrab": 1,"gubed":true});</script>
+
+tc8.1-regular-top100-left-100 <script>VS.Player.show({"top":"100px","left":"200px"},300, 270, "HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1,"gubed":true});</script>
+
+tc8.2-regular-top100-right-100 <script>VS.Player.show({"top":"100px","right":"200px"}, 300, 270, "HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1,"gubed":true});</script>
+
+tc8.3-regular-bottom100-left-100 <script>VS.Player.show({"bottom":"100px","left":"200px"}, 300, 270, "HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1,"gubed":true});</script>
+
+tc8.4-regular-bottom100-right-100 <script>VS.Player.show({"bottom":"100px","right":"200px"},300, 270, "HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1,"gubed":true});</script>
+
+tc9.1-zoom-150 <script>VS.Player.show("bottom-right", 300, 270, "HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1, "zoom":150,"gubed":true});</script>
+
+tc9.2-zoom-30 <script>VS.Player.show("bottom-right", 300, 270, "HASHID",{"auto-play": true, "playback-delay": 1, "extrab": 1, "zoom":30,"gubed":true});</script>
+
+tc10-on-click-open-url-cnn <script>VS.Player.show("bottom-right", 300,270,"HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1,"on-click-open-url":"www.cnn.com","gubed":true});</script>
+
+tc11.1-auto-play-limit-10000 <script>VS.Player.show("bottom-right",300,270, "HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1,"auto-play-limit": 10000,"gubed":true});</script>
+
+tc11.2-auto-play-limit-3 <script>VS.Player.show("bottom-right",300,270,"HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1,"auto-play-limit": 3,"gubed":true});</script>
+
+tc12-disable-player-threshold-10000 <script>VS.Player.show("bottom-right", 300, 270, "HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1,"disable-player-threshold":10000,"gubed":true});</script>
+
+tc13-disable-player-threshold-3 <script>VS.Player.show("bottom-right", 300, 270, "HASHID", {"auto-play": true, "playback-delay": 1, "extrab": 1,"disable-player-threshold":3,"gubed":true});</script>
+
+tc14-movement-down&right <script> VS.Player.show('top-left', 300, 200,'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit': 10000,'on-finish' : 'blank',"label": {'name': 'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,	'font-color': 'white','bg-color': 'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement": {"speed":"fast","scenario": [[5,'move-down','fast'],[25,'stop'],[50,'move-right','fast']]}});</script>
+
+tc15-movement-down&left <script> VS.Player.show('top-right', 300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit': 10000,'on-finish' : 'blank',"label": {'name': 'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Helvetica','font-size': 14,'font-color': 'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement": {"speed":"fast","scenario": [	 [5,'move-down','fast'],[25,'stop'],[50,'move-left','fast']]}});</script>
+
+tc16-movement-up&left <script> VS.Player.show('bottom-right', 300, 200, 'HASHID',{'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish':'blank',"label": {'name': 'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color': 'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement": {"speed":"fast","scenario": [	 [5,'move-up','fast'],[25,'stop'],[50,'move-left','medium']]}});</script>
+
+tc17-movement-up&right <script> VS.Player.show('bottom-left', 300, 200, 'HASHID',{'auto-play': true,"gubed":true,'auto-play-limit': 10000,'on-finish' : 'blank',"label": {'name': 'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'sans-serif','font-size': 14,'font-color': 'white','bg-color':'black','bg-opacity':.7,'start-sec':2,'remove-sec':7},"movement":{"speed":"fast","scenario":[	 [5,'move-up','fast'],[25,'stop'],[50,'move-right','medium']]}});</script>
+
+tc18-movement-move-diagonal-right-down <script> VS.Player.show('top-left',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit': 10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Geneva','font-size': 14,'font-color': 'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement": {"speed":"medium","scenario": [	 [5,'move-diagonal-right-down','medium'],[50,'stop'],[80,'move-right','fast']]}});</script>
+
+tc19-movement-move-diagonal-right-up <script> VS.Player.show('bottom-left',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit': 10000,'on-finish' : 'blank',"label": {'name': 'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'calibri','font-size': 14,'font-color': 'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement": {"speed":"medium","scenario": [	 [5,'move-diagonal-right-up','medium'],[50,'stop'],[80,'move-right','medium']]}});</script>
+
+tc20-movement-move-diagonal-left-down <script> VS.Player.show('top-right',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit': 10000,'on-finish' : 'blank',"label": {'name': 'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color': 'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement": {"speed":"medium","scenario": [	 [5,'move-diagonal-left-down','medium'],[50,'stop'],[80,'move-right','medium']]}});</script>
+
+tc21-movement-move-diagonal-left-up <script> VS.Player.show('bottom-right',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit': 10000,'on-finish' : 'blank',"label": {'name': 'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Palatino','font-size': 14,'font-color': 'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement": {"speed":"fast","scenario": [ [5,'move-diagonal-left-up','medium'],[50,'stop'],[80,'move-right','fast']]}});</script>
+
+tc22-movement-scroll-down <script> VS.Player.show('top-left',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Courier','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"fast","scenario":[[15,'scroll-down','very fast'],[200,'stop'],[280,'move-right','fast']]}});</script>
+
+tc23-movement-scroll-right <script> VS.Player.show('top-left',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"fast","scenario":[	 [15,'scroll-right','fast'],[200,'stop'],[280,'move-right','fast']]}});</script>
+
+tc24-movement-scroll-left <script> VS.Player.show('top-right',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"fast","scenario":[	 [15,'scroll-left','fast'],[200,'stop'],[280,'move-right','fast']]}});</script>
+
+tc25-movement-move-slow <script> VS.Player.show('top-left',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Verdana','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"slow","scenario":[	 [15,'move-down','slow'],[200,'stop'],[280,'move-right','slow']]}});</script>
+
+tc26-movement-move-very-slow <script> VS.Player.show('top-left', 400, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"very-slow","scenario":[	 [15,'move-down','very-slow'],[200,'stop'],[280,'move-right','very-slow']]}});</script>
+
+tc27-movement-move-medium <script> VS.Player.show('top-left',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"medium","scenario":[	 [15,'move-down','medium'],[200,'stop'],[280,'move-right','medium']]}});</script>
+
+tc28-movement-move-fast <script> VS.Player.show('top-left',300, 200,'HASHID',{'auto-play':true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec':7},"movement":{"speed":"fast","scenario":[	 [15,'move-down','fast'],[200,'stop'],[280,'move-right','fast']]}});</script>
+
+tc29-movement-move-very-fast <script> VS.Player.show('top-left',300, 200, 'HASHID', {'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"very fast","scenario":[	 [15,'move-down','very fast'],[200,'stop'],[280,'move-right','very fast']]}});</script>
+
+tc30-label-show-hide <script> VS.Player.show('top-left',300, 200, 'HASHID',{'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir','font-family': 'Arial','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec':7,"scenario": [[100,'label-show'],[110,'label-hide']]},"movement":{"speed":"fast","scenario":[[15,'move-down','very fast'],[200,'stop'],[280,'move-right','fast']]}});</script>
+
+tc31-quiet <script> VS.Player.show('top-left',300,200,'HASHID', {'auto-play': true,'quiet': true,"gubed":true,'auto-play-limit':10000,'on-finish' : 'blank',});</script>
+
+tc32-quiet+auto-play-limit=1 <script> VS.Player.show('top-left',300,200,'HASHID', {'auto-play': true,"gubed":true,'quiet': true,'auto-play-limit':1,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color':'white','bg-color':'black','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"slow","scenario":[	 [15,'move-down','slow'],[200,'stop'],[280,'move-right','slow']]}});</script>
+
+tc33-move_to_target_right-down <script> VS.Player.show('top-left',300,200,'HASHID', {'auto-play': true,"gubed":true,'quiet': true,'auto-play-limit':10000,'on-finish' : 'blank',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color':'#FFFF00','bg-color':'#FF0000','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"slow","scenario":[	 [15,'move-diagonal-right-down','slow','test1'],[200,'stop'],[280,'move-right','slow'],[300,'stop']]}});</script>
+
+tc34-move_to_target_left-down <script> VS.Player.show('top-right',300,200,'e91a5dce7d772a29e89dbb062b386c3e', {'auto-play': true,"gubed":true,'quiet': true,'auto-play-limit':10000,'on-finish' : 'blank','on-click-open-url':'http:www.cnn.com',"label": {'name':'Israel Goldwaser','title': 'VideoStir - Video specialist','font-family': 'Arial','font-size': 14,'font-color':'#FFFF00','bg-color':'#FF0000','bg-opacity':.7,'start-sec': 2,'remove-sec': 7},"movement":{"speed":"slow","scenario":[ [15,'move-diagonal-left-down','slow','test2'],[200,'stop'],[280,'move-down','slow']]}});</script>
+
+tc35-move_to_Two_targets <script> VS.Player.show('top-right',300,200,'HASHID',{'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish':'blank',"label": {'name':'Israel Goldwaser','title':'VideoStir - Video specialist','font-family':'Arial','font-size': 14,'font-color':'#FFFF00','bg-color':'#FF0000','bg-opacity':.7,'start-sec': 2,'remove-sec':7},"movement":{"speed":"fast","scenario":[	 [15,'move-down','fast','test1'],[200,'stop'],[220,'move-left','fast','test2']]}});</script>
+
+tc36-move_to_3_targets_RTL <script> VS.Player.show('top-right',300,200,'HASHID',{'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish':'blank',"label": {'name':'Israel Goldwaser','title':'VideoStir - Video specialist','font-family':'Arial','font-size': 14,'font-color':'#FFFF00','bg-color':'#FF0000','bg-opacity':.7,'start-sec': 2,'remove-sec':7},"movement":{"speed":"fast","scenario":[	 [15,'move-down','fast','test1'],[150,'stop'],[220,'move-left','fast','test2'],[250,'move-left','fast','test3']]}});</script>
+
+tc37-move_to_3_targets_LTR <script> VS.Player.show('top-left',300,200,'e91a5dce7d772a29e89dbb062b386c3e',{'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish':'blank',"label":{'name':'Israel Goldwaser','title':'VideoStir - Video specialist','font-family':'Arial','font-size': 8,'font-color':'#FFFF00','bg-color':'#FF0000','bg-opacity':.7,'start-sec': 2,'remove-sec':7},"movement":{"speed":"fast","scenario":[[15,'move-down','fast','test3'],[100,'stop'],[180,'move-right','fast','test2'],[240,'stop'],[270,'move-right','fast','test1']]}});</script>
+
+tc38-movement-test-mixed <script> VS.Player.show('top-left',300,200,'e91a5dce7d772a29e89dbb062b386c3e',{'auto-play': true,"gubed":true,'auto-play-limit':10000,'on-finish':'blank',"movement":{"speed":"fast","scenario":[[15,'move-down','fast'],[40,'stop'],[50,'move-right','medium'],[60,'move-left','medium'],[70,'move-right','medium'],[80,'move-left','medium'],[90,'move-right','fast'],[100,'move-up','medium'],[110,'move-down','medium'],[120,'move-up','fast'],[130,'move-down','medium'],[140,'move-up','medium'],[150,'move-down','medium'],[160,'stop'],[180,'scroll-down'],[300,'stop']]}});</script>
+
+tc39-movement-test-mixed2 <script> VS.Player.show('bottom-left',300,200,'e91a5dce7d772a29e89dbb062b386c3e',{'auto-play': false,'quiet': true,"gubed":true,'auto-play-limit':10000,'on-finish':'remove',"label": {'name':'Israel Goldwaser','title':'VideoStir - Video specialist','font-family':'thoma','font-size': 25,'font-color':'#FFFF00','bg-color':'#FF0000','bg-opacity':.5,'start-sec': 0,'remove-sec':12},"movement":{"speed":"fast","scenario":[[15,'move-up','medium'],[40,'stop'],[100,'move-up','medium'],[110,'move-up','medium'],[120,'move-up','fast'],[130,'move-down','medium'],[160,'stop'],[180,'scroll-down'],[300,'stop']]}});</script>
+
+tc40-Playlist-show-one-never-seen <script>VS.Player.Playlist({"settings": {"strategy": "show-one-never-seen"},"clips":[{"clip": ["bottom-right",544,304, "e91a5dce7d772a29e89dbb062b386c3e",{"auto-play":true,"gubed":true,"auto-play-limit":100,"on-finish":"remove"}]},{"clip":["bottom-right", 544, 304, "9701dce578d07e782b5c39d70ad41b28",{"auto-play":true,"gubed":true,"auto-play-limit":100,"on-finish":"remove"}]},{"clip":["bottom-right", 544, 304, "0b95b66ea28ce14854d9670ae2b0e91d",{"auto-play":true,"gubed":true,"auto-play-limit":100,"on-finish":"remove"}]},{"clip":["bottom-right", 544, 304, "a7870c1b4aefc2f05d60dee49fe91794",{"auto-play":true,"gubed":true,"auto-play-limit":100,"on-finish":"remove"}]},{"clip":["bottom-right", 544, 304, "5eb6f24a7fd3fc7728f1a05ec392663f",{"auto-play":true,"gubed":true,"auto-play-limit":100,"on-finish":"remove"}]},]});</script>
+
+tc41-Playlist-trigger-click <script>VS.Player.Playlist({"settings":{"strategy": "trigger"},"clips":[{"clip":["bottom-right",544, 304,"e91a5dce7d772a29e89dbb062b386c3e", {"freeze":5, "auto-play":true,"auto-play-limit": 100,"on-finish": "remove"}],"target":"Evie_Welcome","action": "click"},{"clip": ["bottom-right", 544, 304,"9701dce578d07e782b5c39d70ad41b28", {"freeze":5,"auto-play": true, "auto-play-limit":100,"on-finish": "remove"}],"target":"Greg_Welcome","action": "click"},{"clip": ["bottom-right","gubed":true,544,304,"0b95b66ea28ce14854d9670ae2b0e91d", {"freeze":5,"auto-play": true,"auto-play-limit": 100,"on-finish": "remove"}],"target":"Lisamarie_Welcome","action": "click"},{"clip":["bottom-right", 544, 304,"a7870c1b4aefc2f05d60dee49fe91794",{"freeze":5,"gubed":true,"auto-play": true, "auto-play-limit": 100,"on-finish": "remove"}],"target":"Katie_Welcome","action": "click"},{"clip": ["bottom-right",272,152,"5eb6f24a7fd3fc7728f1a05ec392663f",{"auto-play": true,"auto-play-limit": 100,"on-finish": "remove"}],"target": "vs-clickonme","action": "click"},{"clip": ["bottom-right", 272, 152,"a730da85bbe3bf467c8ef6c1e69222f9",{"auto-play": true, "auto-play-limit":100,"on-finish": "remove"}],"target":"vs-clipid","action":"click"},{"clip": ["bottom-right", 272,152,"9701dce578d07e782b5c39d70ad41b28",{"freeze":355,"auto-play":true,"auto-play-limit":100,"on-finish": "remove"}],"target":"vs-freeze","action": "click"}]});</script>
+
+tc42-trigger-parallel <script>VS.Player.Playlist({"settings":{"strategy":"parallel"},"clips":[{"clip":["bottom-right", 544, 304,"54e5852ee33308ee78b747f9704458c1",{"auto-play":true,"gubed":true,"auto-play-limit":10,"on-finish":"blank"}]},{"clip":["bottom-left", 544, 304,"54e5852ee33308ee78b747f9704458c1",{"auto-play":true,"gubed":true,"auto-play-limit":20,"on-finish":"blank"}]},{"clip":["top-left", 544, 304,"54e5852ee33308ee78b747f9704458c1",{"auto-play":true,"gubed":true,"auto-play-limit":30,"on-finish":"blank"}]},{"clip":["top-right", 544, 304,"54e5852ee33308ee78b747f9704458c1",{"auto-play":true,"gubed":true,"auto-play-limit":40,"on-finish":"blank"}]}]});</script>
+
+tc43-trigger-parallel-position-all-center <script>VS.Player.Playlist({"settings":{"strategy":"parallel"},"clips":[{"clip":["center",544,304,"54e5852ee33308ee78b747f9704458c1",{"auto-play":true,"gubed":true,"auto-play-limit":10,"on-finish":"blank"}]},{"clip":["center",544,304,"54e5852ee33308ee78b747f9704458c1",{"auto-play":true,"gubed":true,"auto-play-limit":20,"on-finish":"blank"}]},{"clip":["center", 544, 304,"54e5852ee33308ee78b747f9704458c1",{"auto-play": true,"gubed":true,"auto-play-limit":30,"on-finish": "blank"}]},{"clip":["center", 544, 304,"54e5852ee33308ee78b747f9704458c1",{"auto-play": true,"gubed":true,"auto-play-limit":40,"on-finish": "blank"}]}]});</script>
+
+tc44-locate-at-target <script>VS.Player.show({'object':'test3','offsetTop':'0','offsetLeft':'0'},300,270,"e91a5dce7d772a29e89dbb062b386c3e",{"auto-play": true, "playback-delay": 1,"extrab":1});</script>
+
+
