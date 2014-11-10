@@ -86,3 +86,4 @@ test-output/testng-results.xml
 src/main/resources/application.properties
 test-output/Default suite/Default test.html
 _notes
+out/*
