@@ -6,6 +6,7 @@ Tool for automated creation of pages for manual testing of VideoStir player sett
 ---- SETUP ----
 
 <<<< linux >>>>
+
 1 copy directory tree to LAMP server; 
 2 check/set owning/permissions for copyed directory tree to Apache user;
 3 check/set executable for perl scripts;
@@ -15,5 +16,6 @@ Tool for automated creation of pages for manual testing of VideoStir player sett
 7 point web browser to your web server and enjoy!
 
 <<<< windows >>>>
+
 Alternatively you can use adopted perl script on windows with perl installed,
 see/change/run .bat file in perl directory
