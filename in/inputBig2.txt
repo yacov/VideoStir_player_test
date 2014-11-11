@@ -1,0 +1,9 @@
+HASHID 56f08bf340b19d53b7d91d8e9081f03c
+line1 <script type="text/javascript" src="https://c391671.ssl.cf1.rackcdn.com/js/121221-vs-libs.min.js"></script></script>
+line2 <script src="https://6bfe2caabccdd577a810-bdbb90f389a017a4d0321ddd645160f1.ssl.cf1.rackcdn.com/js/2.13.0/vs.player.min.js"></script></script>
+
+tc0-regular <script> VS.Player.show("bottom-right",430,243,"HASHID",{"auto-play":true,"playback-delay":1,"extrab":1,"gubed":true});</script>
+
+tc1 <script> VS.Player.show("top-left",430,243,"HASHID",{"auto-play":true,"playback-delay":1,"extrab":0,"disable-player-threshold":5, "on-finish":'remove', "auto-play-limit":1,"freeze":0,"on-click-open-url":'http:www.cnn.com', "zoom":100});</script>
+
+tc2 <script> VS.Player.show("top-right",430,243,"HASHID",{"auto-play":false,"playback-delay":0,"extrab":1,"disable-player-threshold":10,"offset-x":25,"offset-y":25,"rotation":90, "on-finish":'play-button', "auto-play-limit":5,"freeze":25, "zoom":100});</script>

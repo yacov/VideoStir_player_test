@@ -1,0 +1,19 @@
+HASHID 56f08bf340b19d53b7d91d8e9081f03c
+line1 <script type="text/javascript" src="https://c391671.ssl.cf1.rackcdn.com/js/121221-vs-libs.min.js"></script></script>
+line2 <script src="https://6bfe2caabccdd577a810-bdbb90f389a017a4d0321ddd645160f1.ssl.cf1.rackcdn.com/js/2.13.0/vs.player.min.js"></script></script>
+
+tc0-regular <script> VS.Player.show("bottom-right",430,243,"HASHID",{"auto-play":true,"playback-delay":1,"extrab":1,"gubed":true});</script>
+
+tc1 <script> VS.Player.show("top-left",430,243,"HASHID",{"auto-play":true,"playback-delay":1,"extrab":0,"disable-player-threshold":5, "on-finish":'remove', "auto-play-limit":1,"freeze":0,"on-click-open-url":'http:www.cnn.com', "zoom":50});</script>
+
+tc2 <script> VS.Player.show("top-right",430,243,"HASHID",{"auto-play":false,"playback-delay":0,"extrab":1,"disable-player-threshold":10,"offset-x":25,"offset-y":25,"rotation":90, "on-finish":'play-button', "auto-play-limit":5,"freeze":25, "zoom":100});</script>
+
+tc3 <script> VS.Player.show("top-right",430,243,"HASHID",{"auto-play":true,"playback-delay":0,"extrab":3,"disable-player-threshold":5,"offset-x":50,"offset-y":50,"rotation":180, "on-finish":'blank', "auto-play-limit":1,"freeze":250, "on-click-open-url":'http:www.cnn.com', "zoom":150});</script>
+
+tc4 <script> VS.Player.show("top-right",215,121,"HASHID",{"auto-play":false,"playback-delay":0,"extrab":5,"disable-player-threshold":10,"offset-x":-25,"offset-y":-25,"rotation":270, "on-finish":'remove', "auto-play-limit":5,"freeze":1500, "zoom":200});</script>
+
+tc5 <script> VS.Player.show("top-right",215,121,"HASHID",{"auto-play":true,"playback-delay":0,"extrab":0,"disable-player-threshold":5,"offset-x":-50,"offset-y":-50,"rotation":360, "on-finish":'play-button', "auto-play-limit":1,"freeze":'the number of frames in a clip', "on-click-open-url":'http:www.cnn.com', "zoom":50});</script>
+
+tc6 <script> VS.Player.show("top-right",215,121,"HASHID",{"auto-play":false,"playback-delay":0,"extrab":1,"disable-player-threshold":10, "on-finish":'blank', "auto-play-limit":5, "zoom":100});</script>
+
+tc7 <script> VS.Player.show("top-right",215,121,"HASHID",{"auto-play":true,"playback-delay":0,"extrab":3,"disable-player-threshold":5,"offset-x":25,"offset-y":25,"rotation":90, "on-finish":'remove', "auto-play-limit":1,"freeze":25, "on-click-open-url":'http:www.cnn.com', "zoom":150});</script>

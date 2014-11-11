@@ -38,7 +38,7 @@ echo "<h1>Screen Resolution:</h1>";
 echo "<p>Width  : ".$_POST['width']."</p>";
 echo "<p>Height : ".$_POST['height']."</p>";
 
-$script_string = "perl perl/player_test_added.pl in/inputBig.txt ".$_POST['width']." ".$_POST['height'];
+$script_string = "perl perl/player_test_added.pl in/inputBig3.txt ".$_POST['width']." ".$_POST['height'];
 echo "<hr><p>run script: ".$script_string."</p>";
 $result = shell_exec($script_string);
 echo $result;

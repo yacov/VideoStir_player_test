@@ -242,7 +242,7 @@ sub handle_line_from_input(){
 		#	zoom 100 means without zoom. 
 		#	200 means double size. 
 		#	50 means half the size
-		if (/['"]\s*zoom\s*['"]\s*:\s*(\d+)\s*,/i){
+		if (/['"]\s*zoom\s*['"]\s*:\s*(\d+)\s*[,}]/i){
 			$x4 = $x3 + $player_w*$1/100;
 			$y4 = $y3 + $player_h*$1/100;		
 			$parameters .= "Video Zoom relative to Player Placeholder = $1%\n";			
