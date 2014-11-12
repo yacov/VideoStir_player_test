@@ -21,15 +21,8 @@ use IO::Socket;
 use Time::localtime;
 use GD::Simple;
 use File::Copy;
+
 my $input_file;
-if (!$ARGV[0] or ($ARGV[0] eq "-help")){ 
-	print "usage:\n";
-	print "perl player-test.pl input.txt";
-	exit;
-}
-else{
-	$input_file = $ARGV[0];
-}
 
 #paramters
 my $hash = "XXX";
@@ -37,26 +30,59 @@ my $line1 = "";
 my $line2 = "";
 my $line25 = "";
 my $line3 = "";
-my $x1 = 0;
-my $y1 = 0;
-my $x2 = 400;
-my $y2 = 300;
-my $canvas_w = $ARGV[1];	#	Just convenient canvas size for my laptop screen
-my $canvas_h = $ARGV[2];
-my $player_w = 400;			#	Default player width
-my $player_h = 300;			#	Default player height
-my $parameters = "";		#	Parameters to print in HTML
 
-#sub handle_line_from_input();
+my $x1 = 0;									#	player upper left
+my $y1 = 0;									#	corner coordinates
 
-print "<pre>width = $canvas_w\n
-height = $canvas_h\n
-Input file name is $input_file\n";
-open (FILE,"$input_file") || die "can't find  $input_file : $!" ;
-my $dirName = "out"."/".getTime();
-mkdir $dirName || die "can't create dir $dirName : $!" ;
-print "Output directory is $dirName\n</pre>
-<hr><h1>Resulting Test pages:</h1>";
+my $x2 = 400;								#	player lower right
+my $y2 = 300;								#	corner coordinates
+
+my $canvas_w = 1340;						#	Just convenient canvas size
+my $canvas_h = 700;							#	for my laptop screen
+
+my $player_w = 400;							#	Default player width
+my $player_h = 300;							#	Default player height
+
+my $dirDelimiter = ($^O =~ /Win/)?"\\":"/";	#	for linux "/", for windows "\\"
+
+my $parameters = "";						#	Parameters to print in HTML
+
+if (!$ARGV[0] or ($ARGV[0] eq "-help")){ 
+	print "usage:\n
+	perl player-test.pl input.txt 800 600\n
+	where\n
+	input.txt - file with tests settings;\n
+	800 - browser window width;\n
+	600 - browser window height;\n";
+	exit;
+}
+else{
+	$input_file = $ARGV[0];
+}
+
+$canvas_w = $ARGV[1] if ($ARGV[1]);	#	canvas size from
+$canvas_h = $ARGV[2] if ($ARGV[2]);	#	command prompt arguments
+
+print "<p>perl running on $^O, directory delimiter is \"$dirDelimiter\"</p>\n";
+
+open (FILE,"$input_file") || die "can't find  $input_file: $!";
+my $dirName = "out".$dirDelimiter.getTime();
+mkdir $dirName || die "can't create dir $dirName : $!";
+print "<p>Output directory is $dirName</p>\n";
+
+my $indexFilePath = $dirName.$dirDelimiter."index.html";
+open (INDEX , ">".$indexFilePath) || die "can't create file $!" ;
+print "<p>Index file with links to test pages is <a href=$indexFilePath target=blank>$indexFilePath</a></p>\n";
+
+print INDEX "<HTML>
+<HEAD>
+<TITLE>Videostir tests: $dirName</TITLE>
+</HEAD>
+<BODY>
+<h1>Input file: $input_file</h1>
+<p>width = $canvas_w</p>
+<p>height = $canvas_h</p>
+<hr><h2>Resulting Test pages:</h2>";
  
 
 #############  loop  ###########################
@@ -65,8 +91,15 @@ while(<FILE>){
 }
 ############ end of loop  ######################
 
-#print "finished .....press any  key to close window ..\n";
-#`pause`;
+print INDEX "</BODY>\n</HTML>";
+close INDEX;
+
+if ($^O =~ /Win/){
+print "finished .....press any  key to close window ..\n";
+`pause`;
+}
+
+################################################
 
 sub handle_line_from_input(){
 	$hash = $1 if (/^HASHID\s+(\S+)/);
@@ -165,18 +198,18 @@ sub handle_line_from_input(){
 		#	Shift clip right/left inside player. 
 		#	50 will shift clip 50 pixels to the right.
 		#	-50 will shift to the left.
-		if (/['"]\s*offset-x\s*['"]\s*:\s*([+-]??)\s*(\d+)\s*,/i){
-			$x3 = $x1 + $1.$2;		
-			$parameters .= "Video horizontal Offset relative to Player Placeholder = $1$2px\n";			
+		if (/['"]\s*offset-x\s*['"]\s*:\s*([+-]??\d+)\s*,/i){
+			$x3 = $x1 + $1;		
+			$parameters .= "Video Offset horizontal = $1 px (relative to Player Placeholder)\n";			
 		}
 		
 		#	offset-y - (shift clip inside player) 
 		#	Shift clip up/down inside player. 
 		#	50 will shift clip 50 pixels to the top. 
 		#	-50 will shift to the bottom.
-		if (/['"]\s*offset-y\s*['"]\s*:\s*([+-]??)\s*(\d+)\s*,/i){
-			$y3 = $y1 + $1.$2;		
-			$parameters .= "Video vertical Offset relative to Player Placeholder = $1$2px\n";			
+		if (/['"]\s*offset-y\s*['"]\s*:\s*([+-]??\d+)\s*,/i){
+			$y3 = $y1 + $1;		
+			$parameters .= "Video Offset vertical = $1 px (relative to Player Placeholder)\n";			
 		}
 		
 		#	Controlling the clip behavior (optional parameters)
@@ -243,9 +276,9 @@ sub handle_line_from_input(){
 		#	200 means double size. 
 		#	50 means half the size
 		if (/['"]\s*zoom\s*['"]\s*:\s*(\d+)\s*[,}]/i){
-			$x4 = $x3 + $player_w*$1/100;
-			$y4 = $y3 + $player_h*$1/100;		
-			$parameters .= "Video Zoom relative to Player Placeholder = $1%\n";			
+			$x4 = $x3 + ($player_w*$1)/100;
+			$y4 = $y3 + ($player_h*$1)/100;		
+			$parameters .= "Video Zoom = $1 % (relative to Player Placeholder)\n";			
 		}
 
 		#	rotation - (rotate clip-clockwise) 
@@ -274,8 +307,10 @@ sub handle_line_from_input(){
 		$img->angle(0);
 		$img->bgcolor('yellow');
 		$img->fgcolor('red');
-		$img->rectangle($x1, $y1, $x2, $y2);	# (top_left_x,	top_left_y,	bottom_right_x,	bottom_right_y)
-												# ($x1, 		$y1,		$x2,			$y2)
+		$img->rectangle($x1, $y1, $x2, $y2);	
+		# (top_left_x,	top_left_y,	bottom_right_x,	bottom_right_y	)
+		# ($x1, 		$y1,		$x2,			$y2				)
+#		$parameters .= "Coordinates of Player:\t\$x1 = $x1\t\$y1 = $y1\t\$x2 = $x2\t\$y2 = $y2\n";
 
 
 		# draw a rectangle with borders around video inside player
@@ -283,26 +318,19 @@ sub handle_line_from_input(){
 		$img->angle(0);
 		$img->bgcolor(undef);
 		$img->fgcolor('blue');
-		$img->rectangle($x3, $y3, $x4, $y4);	# (top_left_x,	top_left_y,	bottom_right_x,	bottom_right_y)
-												# ($x3, 		$y3,		$x4,			$y4)
-
-		# Insert Player dimentions info on the frame 
-#		$img->penSize(1,1);                                 
-#		$img->bgcolor('white');
-#		$img->fgcolor('black');
-#		$img->moveTo($x1 + 10, $y1 + 20);
-#		$img->font(gdMediumBoldFont);
-#		$img->string("$player_w  x  $player_h" );
+		$img->rectangle($x3, $y3, $x4, $y4);
+		# (top_left_x,	top_left_y,	bottom_right_x,	bottom_right_y	)
+		# ($x3, 		$y3,		$x4,			$y4				)
+#		$parameters .= "Coordinates of Video:\t\$x3 = $x3\t\$y3 = $y3\t\$x4 = $x4\t\$y4 = $y4\n";
 
 		# convert into png and name it same as html file (name of current TC)
 		my $imgName = $tc.".png";
-		my $relativeHtmlPath = $dirName."/".$tc.".html";
-		open (my $out, ">".$dirName."/".$imgName) || die "can't create file$!";
+		my $relativeHtmlPath = $dirName.$dirDelimiter.$tc.".html";
+		open (my $out, ">".$dirName.$dirDelimiter.$imgName) || die "can't create file$!";
 		binmode $out;
 		print $out $img->png;
 
-		open (HTML , ">".$relativeHtmlPath)||  die "can't create file$!" ;
-		#open (HTML , ">".$tc.".html")||  die "can't create file$!" ;
+		open (HTML , ">".$relativeHtmlPath) || die "can't create file$!" ;
 
 print HTML "<!DOCTYPE HTML>
 <HTML>
@@ -329,7 +357,7 @@ $vp_script =~ s/</&lt;/g;
 $vp_script =~ s/>/&gt;/g;
 
 print HTML "$vp_script</p>\n
-<p>Parameters:</p>\n
+<h2>Parameters:</h2>\n
 <pre>\n$parameters\n</pre>\n
 $line1\n
 $line2\n
@@ -338,7 +366,7 @@ $line3\n
 </HTML>";
 		close HTML;
 
-		print "\t|\t<a href=".$relativeHtmlPath." target=blank>".$tc."</a>";
+		print INDEX "\t|\t<a href=$tc.html target=blank>$tc</a>";
 	}
 }
 

@@ -5,13 +5,6 @@
 </HEAD>
 <BODY>
 <?php
-//if(isset($_GET['code']))
-//{
-//	header('content-type: text/plain; charset=utf-8');
-//	echo file_get_contents(__FILE__);
-//	exit;
-//}
-
 if(!isset($_POST['width']) || !isset($_POST['height'])) {
 echo '<script type="text/javascript">
 $(document).ready(function () {
@@ -39,12 +32,11 @@ echo "<p>Width  : ".$_POST['width']."</p>";
 echo "<p>Height : ".$_POST['height']."</p>";
 
 $script_string = "perl perl/player_test_added.pl in/inputBig3.txt ".$_POST['width']." ".$_POST['height'];
-echo "<hr><p>run script: ".$script_string."</p>";
+echo "<hr>\n<p>script Start string: \"$script_string\"</p>";
 $result = shell_exec($script_string);
 echo $result;
 ?>
 <br/>
 <hr>
-<!--<a href="?code" target="_blank">this page source php-code</a>-->
 </BODY>
 </HTML>
