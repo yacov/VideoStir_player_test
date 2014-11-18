@@ -1,6 +1,0 @@
-HASHID 18c99febe2085a43b281654fb32ee226
-line1 <script type="text/javascript" src="https://c391671.ssl.cf1.rackcdn.com/js/121221-vs-libs.min.js"></script></script>
-line2 <script src="https://6bfe2caabccdd577a810-bdbb90f389a017a4d0321ddd645160f1.ssl.cf1.rackcdn.com/js/2.13.0/vs.player.min.js"></script></script>
-
-tc0-regular <script> VS.Player.show("bottom-right",300,270,"HASHID",{"auto-play":true,"playback-delay":1,"extrab":1,"gubed":true});</script>
-
