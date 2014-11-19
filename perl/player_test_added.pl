@@ -79,6 +79,7 @@ mkdir $outDirPath || die "can't create dir $outDirName : $!";
 
 my $mainIndexFile = "index.html";
 print "Main index: \"$mainIndexFile\"\n";
+print "Output directory is \"$outDirPath\"\n";
 
 if (! -e $mainIndexFile){
 	print "Create Main index: \"$mainIndexFile\"";
@@ -118,7 +119,6 @@ my $indexFileLink = "<p><a href=out\/$outDirName\/index.html ".
 "browser window dimensions: $canvas_w x $canvas_h".
 "<\/a><\/p>";
 print "New link:\n$indexFileLink\n";
-print "Output directory is \"$outDirPath\"\n";
 
 #	Read file to memory
 $^I = '.bak'; 
