@@ -1,7 +1,31 @@
 ﻿VideoStir_perl_php_tc_page_gen
 ===========================
 
-Tool for automated creation of pages for manual testing of VideoStir player settings sequences
+TOOL for automated creation of pages for visual testing of VideoStir player settings sequences.
+
+TOOL ("perl\player_test_added.pl") is to be started 
+	- directly from command prompt/shell (from TOOL root directory) or 
+	- trough index.php (if this TOOL is installed on WAMP or LAMP server) or 
+	- trough test_generator.bat (on Windows)
+	
+After each start new link to new testsuite ("index.html" in "out/TestSuiteName" directory) will be written to global index ("index.html" in TOOL root directory) 
+
+For correct work TOOL need following directoryes and files:
+
+VideoStir_perl_php_tc_page_gen\─┬─css\────tc.css
+								├-in\───┬─input.txt
+								│		├-inputBig.txt
+								│		├-inputBig2.txt
+								│		└-inputBig3.txt
+								├-js\───┬─jquery.min.js
+								│		├-pop_up_window_open.js
+								│		└-timer.js
+								├-out\
+								├-perl\───player_test_added.pl
+								├-test_generator.bat
+								└-index.php
+
+
 
 ---- SETUP ----
 
@@ -23,6 +47,7 @@ Tool for automated creation of pages for manual testing of VideoStir player sett
 
 <<<< windows >>>>
 
-Alternatively you can use adopted perl script on windows with perl installed,
+Alternatively you can use perl script on windows with perl installed,
 
-see/change/run .bat file in perl directory
+see/change/run test_generator.bat file
+

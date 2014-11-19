@@ -1,0 +1,19 @@
+@charset "utf-8";
+
+#content {
+	display: block;
+	overflow: auto;
+	height: 100%;
+	}
+#time {
+	background-color:#FF0000;
+	font-weight: bolder;
+}
+pre, #time, code {
+	font-size: medium;
+	background-color: rgba(127,127,127,0.5);
+	margin: 0px;
+	padding: 10px;
+	border: 1px solid #000;
+	display: block;
+}

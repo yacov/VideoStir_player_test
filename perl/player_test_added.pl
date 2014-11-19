@@ -21,6 +21,8 @@ use IO::Socket;
 use Time::localtime;
 use GD::Simple;
 use File::Copy;
+use strict;
+use warnings;
 
 my $input_file;
 
@@ -43,9 +45,13 @@ my $canvas_h = 700;							#	for my laptop screen
 my $player_w = 400;							#	Default player width
 my $player_h = 300;							#	Default player height
 
+my $playbackDelay = 0;						#	Default playback start delay
+
 my $dirDelimiter = ($^O =~ /Win/)?"\\":"/";	#	for linux "/", for windows "\\"
 
 my $parameters = "";						#	Parameters to print in HTML
+
+my $mainIndexFh = undef;
 
 if (!$ARGV[0] or ($ARGV[0] eq "-help")){ 
 	print "usage:\n
@@ -63,39 +69,99 @@ else{
 $canvas_w = $ARGV[1] if ($ARGV[1]);	#	canvas size from
 $canvas_h = $ARGV[2] if ($ARGV[2]);	#	command prompt arguments
 
-print "<p>perl running on $^O, directory delimiter is \"$dirDelimiter\"</p>\n";
+print "perl running on $^O, directory delimiter is \"$dirDelimiter\"\n";
 
-open (FILE,"$input_file") || die "can't find  $input_file: $!";
-my $dirName = "out".$dirDelimiter.getTime();
-mkdir $dirName || die "can't create dir $dirName : $!";
-print "<p>Output directory is $dirName</p>\n";
+open (my $inputFh,"$input_file") || die "can't find  $input_file: $!";
 
-my $indexFilePath = $dirName.$dirDelimiter."index.html";
-open (INDEX , ">".$indexFilePath) || die "can't create file $!" ;
-print "<p>Index file with links to test pages is <a href=$indexFilePath target=blank>$indexFilePath</a></p>\n";
+my $outDirName = getTime();
+my $outDirPath = "out".$dirDelimiter.$outDirName;
+mkdir $outDirPath || die "can't create dir $outDirName : $!";
 
-print INDEX "<HTML>
+my $mainIndexFile = "index.html";
+print "Main index: \"$mainIndexFile\"\n";
+
+if (! -e $mainIndexFile){
+	print "Create Main index: \"$mainIndexFile\"";
+	open ($mainIndexFh , ">$mainIndexFile") || die "can't create file $!";
+	print $mainIndexFh "<!DOCTYPE HTML>
+<HTML>
 <HEAD>
-<TITLE>Videostir tests: $dirName</TITLE>
+<TITLE>VideoStir tests global index</TITLE>
+</HEAD>
+<BODY>
+<h1>VideoStir tests global index</h1>
+<hr>
+</BODY>
+</HTML>";
+close $mainIndexFh;
+}
+
+my $indexFilePath = $outDirPath.$dirDelimiter."index.html";
+open (my $indexFh , ">$indexFilePath") || die "can't create file $!" ;
+
+
+#	add testsuite to main index file
+
+#	Prepare indexFileLink
+my $now_string = sprintf("%02d.%02d.%d %02d:%02d:%02d",
+							localtime->mday(),
+							localtime->mon()+1,
+							localtime->year() + 1900,
+							localtime->hour(),
+							localtime->min(),
+							localtime->sec());
+
+my $indexFileLink = "<p><a href=out\/$outDirName\/index.html ".
+"target=_blank>".
+"Generation time: $now_string, ".
+"Input file: $input_file, ".
+"browser window dimensions: $canvas_w x $canvas_h".
+"<\/a><\/p>
+<\/BODY>
+<\/HTML>\n";
+print "New link:\n$indexFileLink\n";
+print "Output directory is \"$outDirPath\"\n";
+
+#	Read file to memory
+$^I = '.bak'; 
+open ($mainIndexFh, "+<$mainIndexFile") || die "can't open file $!";
+my $pos = 0;
+while (<$mainIndexFh>) {
+	if (/<\/BODY>/){
+		truncate $mainIndexFh, $pos;
+	}
+	$pos = tell($mainIndexFh);		
+}
+seek($mainIndexFh, 0, 2);    # 0 byte from end-of-file
+print $mainIndexFh $indexFileLink;
+close($mainIndexFh);
+
+print $indexFh "<!DOCTYPE HTML>
+<HTML>
+<HEAD>
+<TITLE>Videostir tests: $outDirName</TITLE>
+<script src=\"..\/..\/js\/pop_up_window_open.js\" type=\"text\/javascript\"></script>
 </HEAD>
 <BODY>
 <h1>Input file: $input_file</h1>
 <p>width = $canvas_w</p>
 <p>height = $canvas_h</p>
-<hr><h2>Resulting Test pages:</h2>";
+<hr><h2>Resulting Test pages:</h2>
+<p>";
  
-
+sub handle_line_from_input();
+ 
 #############  loop  ###########################
-while(<FILE>){
+while(<$inputFh>){
 	handle_line_from_input();
 }
 ############ end of loop  ######################
 
-print INDEX "</BODY>\n</HTML>";
-close INDEX;
+print $indexFh "</p>\n</BODY>\n</HTML>";
+close $indexFh;
 
 if ($^O =~ /Win/){
-print "finished .....press any  key to close window ..\n";
+print "finished .....press any  key to close window.....\n";
 `pause`;
 }
 
@@ -127,35 +193,35 @@ sub handle_line_from_input(){
 		if (/['"]top-left['"]/i){
 			$x1 = 0;
 			$y1 = 0;
-			$parameters .= "Player Placeholder Position: top-left\n";
+			$parameters .= "Player Position = top-left\n";
 		}
 
 		#	top-right
 		if (/['"]top-right['"]/i){
 			$x1 = $canvas_w - $player_w;
 			$y1 = 0;
-			$parameters .= "Player Placeholder Position: top-right\n";
+			$parameters .= "Player Position = top-right\n";
 		}
 
 		#	bottom-right
 		if (/['"]bottom-right['"]/i){
 			$x1 = $canvas_w - $player_w;
 			$y1 = $canvas_h - $player_h;
-			$parameters .= "Player Placeholder Position: bottom-right\n";
+			$parameters .= "Player Position = bottom-right\n";
 		}
 
 		#	bottom-left
 		if (/['"]bottom-left['"]/i){
 			$x1 = 0;
 			$y1 = $canvas_h - $player_h;
-			$parameters .= "Player Placeholder Position: bottom-left\n";
+			$parameters .= "Player Position = bottom-left\n";
 		}
 		
 		#	center
 		if (/['"]center['"]/i){
 			$x1 = ($canvas_w - $player_w)/2;
 			$y1 = ($canvas_h - $player_h)/2;
-			$parameters .= "Player Placeholder Position: center\n";
+			$parameters .= "Player Position = center\n";
 		}
 
 		#	specific positions based on pixels 
@@ -166,24 +232,24 @@ sub handle_line_from_input(){
 		#	top
 		if (/{\s*["']top["']\s*:\s*["'](\d+?)px["']\s*,\s*["']\w+?["']:["']\d+?px["']}/i){
 			$y1 = $1;
-			$parameters .= "Player Placeholder Position: $1px from top\n";
+			$parameters .= "Player Position = $1 px from top\n";
 		}			
 
 		#	bottom
 		if (/{\s*["']bottom["']\s*:\s*["'](\d+?)px["']\s*,\s*["']\w+?["']:["']\d+?px["']}/i){
 			$y1 = $canvas_h - $player_h - $1;
-			$parameters .= "Player Placeholder Position: $1px from bottom\n";			
+			$parameters .= "Player Position = $1 px from bottom\n";			
 		}
 		#	left
 		if (/{\s*["']\w+?["']\s*:\s*["']\d+?px["']\s*,\s*["']left["']:["'](\d+?)px["']}/i){
 			$x1 = $1;
-			$parameters .= "Player Placeholder Position: $1px from left\n";			
+			$parameters .= "Player Position = $1 px from left\n";			
 		}
  
 		#	right
 		if (/{\s*["']\w+?["']\s*:\s*["']\d+?px["']\s*,\s*["']right["']:["'](\d+?)px["']}/i){
 			$x1 = $canvas_w - $player_w - $1;
-			$parameters .= "Player Placeholder Position: $1px from right\n";			
+			$parameters .= "Player Position = $1 px from right\n";			
 		}
 
 		$x2 = $x1 + $player_w;
@@ -200,7 +266,7 @@ sub handle_line_from_input(){
 		#	-50 will shift to the left.
 		if (/['"]\s*offset-x\s*['"]\s*:\s*([+-]??\d+)\s*,/i){
 			$x3 = $x1 + $1;		
-			$parameters .= "Video Offset horizontal = $1 px (relative to Player Placeholder)\n";			
+			$parameters .= "Video Offset horizontal = $1 px (relative to Player)\n";			
 		}
 		
 		#	offset-y - (shift clip inside player) 
@@ -209,7 +275,7 @@ sub handle_line_from_input(){
 		#	-50 will shift to the bottom.
 		if (/['"]\s*offset-y\s*['"]\s*:\s*([+-]??\d+)\s*,/i){
 			$y3 = $y1 + $1;		
-			$parameters .= "Video Offset vertical = $1 px (relative to Player Placeholder)\n";			
+			$parameters .= "Video Offset vertical = $1 px (relative to Player)\n";			
 		}
 		
 		#	Controlling the clip behavior (optional parameters)
@@ -217,8 +283,8 @@ sub handle_line_from_input(){
 		#	playback-delay - (delay) 
 		#	how many seconds to wait before running
 		if (/['"]\s*playback-delay\s*['"]\s*:\s*(\d+)\s*,/i){
-			my $playbackDelay = $1;		
-			$parameters .= "Video Playback Delay = $1S\n";			
+			$playbackDelay = $1;		
+			$parameters .= "Video Playback Delay = $1 S\n";			
 		}
 
 		#	auto-play - (auto play)
@@ -234,7 +300,7 @@ sub handle_line_from_input(){
 		#	Catch the visitors eye while avoiding auto-playing the clip
 		if (/['"]\s*freeze\s*['"]\s*:\s*(\d+)\s*,/i){
 			my $freeze = $1;		
-			$parameters .= "clip will freeze after $1 frames\n";
+			$parameters .= "clip will freeze after = $1 frames\n";
 		}
 
 		#	auto-play-limit - (when to stop auto play) 
@@ -242,7 +308,7 @@ sub handle_line_from_input(){
 		#	auto-play-limit=false mode and display play button.
 		if (/['"]\s*auto-play-limit\s*['"]\s*:\s*(\d+)\s*,/i){
 			my $autoPlayLimit = $1;		
-			$parameters .= "clip will play automatically $1 times\n";
+			$parameters .= "clip will play automatically = $1 times\n";
 		}
 
 		#	on-finish - (what to do after the clip ends) 
@@ -252,7 +318,7 @@ sub handle_line_from_input(){
 		#	"blank" leave an empty frame
 		if (/['"]\s*on-finish\s*['"]\s*:\s*['"]*(.+?)['"]*,/i){
 			my $onFinish = $1;		
-			$parameters .= "after the clip ends: $1\n";			
+			$parameters .= "after the clip ends = $1\n";			
 		}
 
 		#	disable-player-threshold - (when to stop presenting player at all ) 
@@ -260,15 +326,14 @@ sub handle_line_from_input(){
 		#	The player will stop loading at all.
 		if (/['"]\s*disable-player-threshold\s*['"]\s*:\s*(\d+)\s*,/i){
 			my $disablePlayerThreshold = $1;		
-			$parameters .= "The player will stop loading at all after $1 views on browser\n";
+			$parameters .= "The player will stop loading at all after = $1 views on browser\n";
 		}
-
 
 		#	on-click-open-url - (redirects to url of choice when clicking on clip) 
 		#	To which webpage to "jump" when clicking on clip's area "click on me..."
 		if (/['"]\s*on-click-open-url\s*['"]\s*:\s*['"](\S+?)['"]\s*,/i){
 			my $onClickOpenUrl = $1;		
-			$parameters .= "when clicking on clip, it redirects  to $1\n";			
+			$parameters .= "when clicking on clip, it redirects  to = $1\n";			
 		}
 		
 		#	zoom - (zoom in/out clip inside player frame) 
@@ -278,7 +343,7 @@ sub handle_line_from_input(){
 		if (/['"]\s*zoom\s*['"]\s*:\s*(\d+)\s*[,}]/i){
 			$x4 = $x3 + ($player_w*$1)/100;
 			$y4 = $y3 + ($player_h*$1)/100;		
-			$parameters .= "Video Zoom = $1 % (relative to Player Placeholder)\n";			
+			$parameters .= "Video Zoom = $1 % (relative to Player)\n";			
 		}
 
 		#	rotation - (rotate clip-clockwise) 
@@ -286,7 +351,7 @@ sub handle_line_from_input(){
 		#	180 degrees means up side down. 270 means on the left side
 		if (/['"]\s*rotation\s*['"]\s*:\s*(\d+)\s*,/i){
 			my $rotation = $1;		
-			$parameters .= "rotation: $1 degrees\n";
+			$parameters .= "rotation = $1 degrees\n";
 		}
 
 		#	extrab - (extra buffer) 
@@ -294,13 +359,12 @@ sub handle_line_from_input(){
 		#	smooth run for bigger clips and shaky connections
 		if (/['"]\s*extrab\s*['"]\s*:\s*(\d+)\s*,/i){
 			my $extrab = $1;		
-			$parameters .= "extra buffer: $1S\n";
+			$parameters .= "extra buffer = $1 S\n";
 		}
 		
 		#ToDo Retrieve different info from file
 		# create new canvas
 		my $img = GD::Simple->new($canvas_w, $canvas_h);
-
 
 		# draw a filled rectangle with borders around player
 		$img->penSize(1,1); 
@@ -312,7 +376,6 @@ sub handle_line_from_input(){
 		# ($x1, 		$y1,		$x2,			$y2				)
 #		$parameters .= "Coordinates of Player:\t\$x1 = $x1\t\$y1 = $y1\t\$x2 = $x2\t\$y2 = $y2\n";
 
-
 		# draw a rectangle with borders around video inside player
 		$img->penSize(1,1); 
 		$img->angle(0);
@@ -323,50 +386,99 @@ sub handle_line_from_input(){
 		# ($x3, 		$y3,		$x4,			$y4				)
 #		$parameters .= "Coordinates of Video:\t\$x3 = $x3\t\$y3 = $y3\t\$x4 = $x4\t\$y4 = $y4\n";
 
+		# draw a rectangle around the testing picture
+		$img->penSize(1,1); 
+		$img->angle(0);
+		$img->bgcolor(undef);
+		$img->fgcolor('black');
+		$img->rectangle(0, 0, $canvas_w, $canvas_h);
+		
 		# convert into png and name it same as html file (name of current TC)
 		my $imgName = $tc.".png";
-		my $relativeHtmlPath = $dirName.$dirDelimiter.$tc.".html";
-		open (my $out, ">".$dirName.$dirDelimiter.$imgName) || die "can't create file$!";
+		my $relativeHtmlPath = $outDirPath.$dirDelimiter.$tc.".html";
+		open (my $out, ">".$outDirPath.$dirDelimiter.$imgName) || die "can't create file$!";
 		binmode $out;
 		print $out $img->png;
 
-		open (HTML , ">".$relativeHtmlPath) || die "can't create file$!" ;
+		my $vp_script = $line3;
+		$vp_script =~ s/</&lt;/g;
+		$vp_script =~ s/>/&gt;/g;
 
-print HTML "<!DOCTYPE HTML>
+		$parameters =~ s/^/<tr><td align=\"right\">/mg;
+		$parameters =~ s/\s=\s/<\/td><td align="left">/mg;
+		$parameters =~ s/$/<\/td><\/tr>/mg;
+		
+		open (my $tcFh , ">".$relativeHtmlPath) || die "can't create file$!" ;
+
+print $tcFh "<!DOCTYPE HTML>
 <HTML>
 <HEAD>
 <TITLE>Test Videostir: $tc</TITLE>
 <STYLE type=\"text/css\">
 body {
-	margin: 30;
+	font-family: \"Lucida Console\", Monaco, monospace;
+	margin: 0;
 	padding: 0;
 	background-attachment: fixed;
-	background-image: url($imgName);
 	background-repeat: no-repeat;
 	background-position: 0px 0px;
+	background-image: url($imgName);
+}
+#content {
+	margin: 10px;
+	padding: 0px;
+	height: 600px;
+	width: 600px;
+}
+#player {
+	background-color: #FFFF00;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+	height: 243px;
+	width: 430px;
+	border: 1px solid #000;
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	float: none;
 }
 </STYLE>
+<script src=\"..".$dirDelimiter."..".$dirDelimiter."js".$dirDelimiter."timer.js\" type=\"text\/javascript\"><\/script>
+<link href=\"..".$dirDelimiter."..".$dirDelimiter."css".$dirDelimiter."tc.css\" rel=\"stylesheet\" type=\"text\/css\">
 </HEAD>
 <BODY>
-<h1>$tc</h1>
+<div id=\"content\">
+<h1>Test case name: $tc</h1>
 <h2>Video player script:</h2>
-<p>";
-
-my $vp_script = $line3;
-$vp_script =~ s/</&lt;/g;
-$vp_script =~ s/>/&gt;/g;
-
-print HTML "$vp_script</p>\n
-<h2>Parameters:</h2>\n
-<pre>\n$parameters\n</pre>\n
-$line1\n
-$line2\n
-$line3\n
-</BODY>\n
+<code>$vp_script</code>
+<h2>Time from page load:</h2>
+<p id=\"time\" onclick=\"startstoptimer()\">00.00</p>
+<h2>Parameters:</h2>
+<table width=\"100%\" border=\"1\" cellpadding=\"5\" cellspacing=\"0\" id=\"parameters\">
+    <tr>
+      <th align=\"right\">Parameter</th>
+      <th align=\"left\">Value</th>
+    </tr>
+$parameters
+</table>
+$line1
+$line2
+$line3
+<script>
+	setDelay($playbackDelay);
+	display();
+</script>
+</BODY>
 </HTML>";
-		close HTML;
+		close $tcFh;
 
-		print INDEX "\t|\t<a href=$tc.html target=blank>$tc</a>";
+		print $indexFh "&nbsp;|&nbsp;<a href=$tc.html ".
+						"target=\"$tc\" ".
+						"onclick=\"openPopupWindow(this.href,".
+						"'TestCase',$canvas_w,$canvas_h); ".
+						"return false;\" ".
+						"title=\"$tc\">$tc</a>";
 	}
 }
 
