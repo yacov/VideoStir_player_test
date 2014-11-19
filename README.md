@@ -13,17 +13,17 @@ After each start new link to new testsuite ("index.html" in "out/TestSuiteName" 
 For correct work TOOL need following directoryes and files:
 
 VideoStir_perl_php_tc_page_gen\─┬─css\────tc.css
-								├-in\───┬─input.txt
-								│		├-inputBig.txt
-								│		├-inputBig2.txt
-								│		└-inputBig3.txt
-								├-js\───┬─jquery.min.js
-								│		├-pop_up_window_open.js
-								│		└-timer.js
-								├-out\
-								├-perl\───player_test_added.pl
-								├-test_generator.bat
-								└-index.php
+                                ├-in\───┬─input.txt
+                                │       ├-inputBig.txt
+                                │       ├-inputBig2.txt
+                                │       └-inputBig3.txt
+                                ├-js\───┬─jquery.min.js
+                                │       ├-pop_up_window_open.js
+                                │       └-timer.js
+                                ├-out\
+                                ├-perl\───player_test_added.pl
+                                ├-test_generator.bat
+                                └-index.php
 
 
 
