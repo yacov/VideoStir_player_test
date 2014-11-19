@@ -116,9 +116,7 @@ my $indexFileLink = "<p><a href=out\/$outDirName\/index.html ".
 "Generation time: $now_string, ".
 "Input file: $input_file, ".
 "browser window dimensions: $canvas_w x $canvas_h".
-"<\/a><\/p>
-<\/BODY>
-<\/HTML>\n";
+"<\/a><\/p>";
 print "New link:\n$indexFileLink\n";
 print "Output directory is \"$outDirPath\"\n";
 
@@ -133,7 +131,7 @@ while (<$mainIndexFh>) {
 	$pos = tell($mainIndexFh);		
 }
 seek($mainIndexFh, 0, 2);    # 0 byte from end-of-file
-print $mainIndexFh $indexFileLink;
+print $mainIndexFh $indexFileLink."\n<\/BODY>\n<\/HTML>\n";
 close($mainIndexFh);
 
 print $indexFh "<!DOCTYPE HTML>
@@ -371,7 +369,7 @@ sub handle_line_from_input(){
 		$img->angle(0);
 		$img->bgcolor('yellow');
 		$img->fgcolor('red');
-		$img->rectangle($x1, $y1, $x2, $y2);	
+		$img->rectangle($x1-1, $y1-1, $x2-1, $y2-1);	
 		# (top_left_x,	top_left_y,	bottom_right_x,	bottom_right_y	)
 		# ($x1, 		$y1,		$x2,			$y2				)
 #		$parameters .= "Coordinates of Player:\t\$x1 = $x1\t\$y1 = $y1\t\$x2 = $x2\t\$y2 = $y2\n";
@@ -381,7 +379,7 @@ sub handle_line_from_input(){
 		$img->angle(0);
 		$img->bgcolor(undef);
 		$img->fgcolor('blue');
-		$img->rectangle($x3, $y3, $x4, $y4);
+		$img->rectangle($x3-1, $y3-1, $x4-1, $y4-1);
 		# (top_left_x,	top_left_y,	bottom_right_x,	bottom_right_y	)
 		# ($x3, 		$y3,		$x4,			$y4				)
 #		$parameters .= "Coordinates of Video:\t\$x3 = $x3\t\$y3 = $y3\t\$x4 = $x4\t\$y4 = $y4\n";
@@ -390,8 +388,8 @@ sub handle_line_from_input(){
 		$img->penSize(1,1); 
 		$img->angle(0);
 		$img->bgcolor(undef);
-		$img->fgcolor('black');
-		$img->rectangle(0, 0, $canvas_w, $canvas_h);
+		$img->fgcolor('red');
+		$img->rectangle(0, 0, $canvas_w-1, $canvas_h-1);
 		
 		# convert into png and name it same as html file (name of current TC)
 		my $imgName = $tc.".png";
@@ -473,12 +471,12 @@ $line3
 </HTML>";
 		close $tcFh;
 
-		print $indexFh "&nbsp;|&nbsp;<a href=$tc.html ".
+		print $indexFh "|	\t<a href=$tc.html ".
 						"target=\"$tc\" ".
 						"onclick=\"openPopupWindow(this.href,".
-						"'TestCase',$canvas_w,$canvas_h); ".
+						"'$tc',$canvas_w,$canvas_h); ".
 						"return false;\" ".
-						"title=\"$tc\">$tc</a>";
+						"title=\"$tc\">$tc</a>\t	\n";
 	}
 }
 
