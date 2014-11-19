@@ -12,18 +12,18 @@ After each start new link to new testsuite ("index.html" in "out/TestSuiteName" 
 
 For correct work TOOL need following directoryes and files:
 
-VideoStir_perl_php_tc_page_gen\─┬─css\────tc.css
-********************************├-in\───┬─input.txt
-********************************│*******├-inputBig.txt
-********************************│*******├-inputBig2.txt
-********************************│*******└-inputBig3.txt
-********************************├-js\───┬─jquery.min.js
-********************************│*******├-pop_up_window_open.js
-********************************│*******└-timer.js
-********************************├-out\
-********************************├-perl\───player_test_added.pl
-********************************├-test_generator.bat
-********************************└-index.php
+VideoStir_perl_php_tc_page_gen\─┬─css\────tc.css<br>
+********************************├-in\───┬─input.txt<br>
+********************************│*******├-inputBig.txt<br>
+********************************│*******├-inputBig2.txt<br>
+********************************│*******└-inputBig3.txt<br>
+********************************├-js\───┬─jquery.min.js<br>
+********************************│*******├-pop_up_window_open.js<br>
+********************************│*******└-timer.js<br>
+********************************├-out\<br>
+********************************├-perl\───player_test_added.pl<br>
+********************************├-test_generator.bat<br>
+********************************└-index.php<br>
 
 For correct displaying of test pages, scrollbars are turned off, use arrows for navigation instead.
 
