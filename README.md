@@ -1,7 +1,6 @@
 <h1>VideoStir_perl_php_tc_page_gen</h1>
-<hr>
-<strong>TOOL</strong> for automated creation of pages for visual testing of VideoStir player settings sequences.
-<strong>TOOL</strong> ("perl\player_test_added.pl") is to be started<br>
+<p><strong>TOOL</strong> for automated creation of pages for visual testing of VideoStir player settings sequences.</p>
+<p><strong>TOOL</strong> ("perl\player_test_added.pl") is to be started<br></p>
 <ul>
 <li>	- directly from command prompt/shell (from <strong>TOOL</strong> root directory) or<br> 
 <li>	- trough index.php (if this <strong>TOOL</strong> is installed on WAMP or LAMP server) or<br> 
@@ -11,18 +10,18 @@
 
 <h2>For correct work <strong>TOOL</strong> need following directoryes and files:</h2>
 <pre>
-VideoStir_perl_php_tc_page_gen\─┬─css\────tc.css<br>
-********************************├-in\───┬─input.txt<br>
-********************************│*******├-inputBig.txt<br>
-********************************│*******├-inputBig2.txt<br>
-********************************│*******└-inputBig3.txt<br>
-********************************├-js\───┬─jquery.min.js<br>
-********************************│*******├-pop_up_window_open.js<br>
-********************************│*******└-timer.js<br>
-********************************├-out\<br>
-********************************├-perl\───player_test_added.pl<br>
-********************************├-test_generator.bat<br>
-********************************└-index.php<br>
+VideoStir_perl_php_tc_page_gen\─┬─css\────tc.css
+                                ├─in\───┬─input.txt
+                                │       ├-inputBig.txt
+                                │       ├-inputBig2.txt
+                                │       └-inputBig3.txt
+                                ├─js\───┬─jquery.min.js
+                                │       ├-pop_up_window_open.js
+                                │       └-timer.js
+                                ├─out\
+                                ├─perl\───player_test_added.pl
+                                ├─test_generator.bat
+                                └─index.php
 </pre>
 <p>For correct displaying of test pages, scrollbars are turned off, use arrows for navigation instead.</p>
 <h2>SETUP</h2>
