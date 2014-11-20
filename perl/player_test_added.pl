@@ -470,11 +470,14 @@ $line3
 </BODY>
 </HTML>";
 		close $tcFh;
-
+		
+		my $popupWindowW = $canvas_w+2;
+		my $popupWindowH = $canvas_h+1;
+		
 		print $indexFh "|	\t<a href=$tc.html ".
 						"target=\"$tc\" ".
 						"onclick=\"openPopupWindow(this.href,".
-						"'$tc',$canvas_w,$canvas_h); ".
+						"'$tc',$popupWindowW,$popupWindowH); ".
 						"return false;\" ".
 						"title=\"$tc\">$tc</a>\t	\n";
 	}
