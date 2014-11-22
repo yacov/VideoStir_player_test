@@ -472,7 +472,7 @@ $line3
 		close $tcFh;
 		
 		my $popupWindowW = $canvas_w+2;
-		my $popupWindowH = $canvas_h+1;
+		my $popupWindowH = $canvas_h+2;
 		
 		print $indexFh "|	\t<a href=$tc.html ".
 						"target=\"$tc\" ".
