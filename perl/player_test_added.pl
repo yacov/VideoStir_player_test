@@ -463,7 +463,7 @@ $parameters
 $line1
 $line2
 $line3
-<script>
+<script type=\"text/javascript\">
 	setDelay($playbackDelay);
 	display();
 </script>
@@ -474,12 +474,12 @@ $line3
 		my $popupWindowW = $canvas_w+2;
 		my $popupWindowH = $canvas_h+2;
 		
-		print $indexFh "|	\t<a href=$tc.html ".
+		print $indexFh "|&nbsp;<a href=$tc.html ".
 						"target=\"$tc\" ".
 						"onclick=\"openPopupWindow(this.href,".
 						"'$tc',$popupWindowW,$popupWindowH); ".
 						"return false;\" ".
-						"title=\"$tc\">$tc</a>\t	\n";
+						"title=\"$tc\">$tc</a>&nbsp;\n";
 	}
 }
 
