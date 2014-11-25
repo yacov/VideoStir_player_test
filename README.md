@@ -1,4 +1,4 @@
-<h1>VideoStir_perl_php_tc_page_gen</h1>
+<h1>VideoStir_player_test</h1>
 <p><strong>TOOL</strong> for automated creation of pages for visual testing of VideoStir player settings sequences.</p>
 <p><strong>TOOL</strong> ("perl\player_test_added.pl") is to be started</p>
 <ul>
@@ -6,13 +6,12 @@
 <li>trough index.php (if this <strong>TOOL</strong> is installed on WAMP or LAMP server) or 
 <li>trough test_generator.bat (on Windows)
 </ul>	
-<p>After each start new link to new testsuite ("index.html" in "out/TestSuiteName" directory) will be written to global index ("index.html" in TOOL root directory)</p>
-<h2>For correct work <strong>TOOL</strong> need following directoryes and files:</h2>
-<pre>VideoStir_perl_php_tc_page_gen\─┬─css\────tc.css
-                                ├─in\───┬─input.txt
-                                │       ├-inputBig.txt
-                                │       ├-inputBig2.txt
-                                │       └-inputBig3.txt
+<p>After each start of a new testsuite ("index.html" in "out/TestSuiteName" directory) a new link will be written to global index ("index.html" in TOOL root directory)</p>
+<h2>For correct work <strong>TOOL</strong> need following directories and files:</h2>
+
+<pre>VideoStir_player_test\─┬─css\────tc.css
+                                ├─in\────input.txt
+                                │       
                                 ├─js\───┬─jquery.min.js
                                 │       ├-pop_up_window_open.js
                                 │       └-timer.js
@@ -20,6 +19,7 @@
                                 ├─perl\───player_test_added.pl
                                 ├─test_generator.bat
                                 └─index.php</pre>
+                                
 <p>For correct displaying of test pages, scrollbars are turned off, use arrows for navigation instead.</p>
 <h2>SETUP</h2>
 <h3>linux</h3>
