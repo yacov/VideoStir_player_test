@@ -25,7 +25,7 @@ document.frm.height.value= window.innerHeight ;" value="Get current browser wind
 else {
 echo "<h1>Screen Resolution:</h1>";
 echo "<p>Width  : ".$_POST['width']."\tHeight : ".$_POST['height']."</p>";
-$script_string = "perl perl/player_test_added.pl in/inputBig.txt ".$_POST['width']." ".$_POST['height'];
+$script_string = "perl perl/player_test_added.pl in/input.txt ".$_POST['width']." ".$_POST['height'];
 echo "<hr>\n<p>script Start string: \"$script_string\"</p>";
 $result = shell_exec($script_string);
 echo $result.
